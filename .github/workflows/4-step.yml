@@ -44,19 +44,21 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Workshop Tracker에 완료 보고
-        if: success()
+        if: success() && vars.SESSION_ID != ''
         continue-on-error: true
         run: |
           curl -sf -X POST "https://workshop-tracker-api.jollyocean-9c92d5de.koreacentral.azurecontainerapps.io/api/events" \
             -H "Content-Type: application/json" \
             -d '{
-              "sessionId": "fe72e72d",
+              "sessionId": "'"$SESSION_ID"'",
               "type": "completed",
               "username": "'"$GITHUB_ACTOR"'",
               "repo": "'"$GITHUB_REPOSITORY"'",
               "track": "github-pages",
               "runId": "'"$GITHUB_RUN_ID"'"
             }'
+        env:
+          SESSION_ID: ${{ vars.SESSION_ID }}
 
   finish_exercise:
     name: 실습 완료
