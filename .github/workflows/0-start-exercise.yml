@@ -18,7 +18,7 @@ jobs:
     if: |
       !github.event.repository.is_template
     name: 실습 시작
-    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.6.0
+    uses: gh-skills-kr/exercise-toolkit/.github/workflows/start-exercise.yml@kr-v0.6.0
     with:
       exercise-title: "GitHub Pages"
       intro-message: "GitHub Pages를 사용하여 GitHub 저장소에서 사이트나 블로그를 만들어 보세요."
@@ -69,9 +69,9 @@ jobs:
       - name: 응답 템플릿 가져오기
         uses: actions/checkout@v4
         with:
-          repository: skills/exercise-toolkit
+          repository: gh-skills-kr/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.6.0
+          ref: kr-v0.6.0
 
       - name: 댓글 작성 - 단계 콘텐츠 추가
         id: build-comment

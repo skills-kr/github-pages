@@ -15,7 +15,7 @@ env:
 jobs:
   find_exercise:
     name: 실습 이슈 찾기
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.6.0
+    uses: gh-skills-kr/exercise-toolkit/.github/workflows/find-exercise-issue.yml@kr-v0.6.0
 
   post_next_step_content:
     name: 다음 단계 콘텐츠 게시
@@ -31,9 +31,9 @@ jobs:
       - name: 응답 템플릿 가져오기
         uses: actions/checkout@v4
         with:
-          repository: skills/exercise-toolkit
+          repository: gh-skills-kr/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.6.0
+          ref: kr-v0.6.0
 
       - name: 메시지 작성 - 단계 완료
         id: build-message-step-finish
