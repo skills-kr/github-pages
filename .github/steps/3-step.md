@@ -34,6 +34,22 @@ Jekyll은 `_config.yml`이라는 파일을 사용하여 사이트 설정, 테마
 
    </details>
 
+1. (선택 사항) 블로그 포스트의 날짜/시간 처리를 위한 추가 설정도 가능합니다:
+
+   - **`timezone`**: Jekyll이 날짜를 처리할 때 사용할 시간대를 지정합니다. 한국 시간 기준으로 빌드하려면 `Asia/Seoul`을 설정하세요.
+   - **`future`**: 기본적으로 Jekyll은 미래 날짜의 포스트를 빌드하지 않습니다. `true`로 설정하면 미래 날짜의 포스트도 사이트에 표시됩니다.
+
+   <details>
+   <summary>예시</summary><br/>
+
+   ```yml
+   theme: minima
+   timezone: Asia/Seoul
+   future: true
+   ```
+
+   </details>
+
 1. 변경 사항을 `main` branch에 커밋합니다.
 1. 변경 사항을 커밋하면 Mona가 이 실습의 다음 단계를 준비합니다!
 
