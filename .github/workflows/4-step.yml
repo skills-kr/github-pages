@@ -18,7 +18,7 @@ env:
 jobs:
   find_exercise:
     name: 실습 이슈 찾기
-    uses: gh-skills-kr/exercise-toolkit/.github/workflows/find-exercise-issue.yml@kr-v0.6.0
+    uses: skills-kr/exercise-toolkit/.github/workflows/find-exercise-issue.yml@kr-v0.6.0
 
   post_review_content:
     name: 리뷰 콘텐츠 게시
@@ -61,7 +61,7 @@ jobs:
   finish_exercise:
     name: 실습 완료
     needs: [find_exercise, post_review_content]
-    uses: gh-skills-kr/exercise-toolkit/.github/workflows/finish-exercise.yml@kr-v0.6.0
+    uses: skills-kr/exercise-toolkit/.github/workflows/finish-exercise.yml@kr-v0.6.0
     with:
       issue-url: ${{ needs.find_exercise.outputs.issue-url }}
       exercise-title: "GitHub Pages"

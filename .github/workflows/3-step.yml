@@ -18,7 +18,7 @@ env:
 jobs:
   find_exercise:
     name: 실습 이슈 찾기
-    uses: gh-skills-kr/exercise-toolkit/.github/workflows/find-exercise-issue.yml@kr-v0.6.0
+    uses: skills-kr/exercise-toolkit/.github/workflows/find-exercise-issue.yml@kr-v0.6.0
 
   check_step_work:
     name: 단계 작업 확인
@@ -34,7 +34,7 @@ jobs:
       - name: 응답 템플릿 가져오기
         uses: actions/checkout@v4
         with:
-          repository: gh-skills-kr/exercise-toolkit
+          repository: skills-kr/exercise-toolkit
           path: exercise-toolkit
           ref: kr-v0.6.0
 
@@ -93,7 +93,7 @@ jobs:
       - name: 응답 템플릿 가져오기
         uses: actions/checkout@v4
         with:
-          repository: gh-skills-kr/exercise-toolkit
+          repository: skills-kr/exercise-toolkit
           path: exercise-toolkit
           ref: kr-v0.6.0
 
