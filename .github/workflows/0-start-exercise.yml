@@ -107,13 +107,18 @@ jobs:
         if: success()
         continue-on-error: true
         run: |
-          curl -sf -X POST "https://workshop-tracker-api.jollyocean-9c92d5de.koreacentral.azurecontainerapps.io/api/events" \
+          SESSION_ID=$(jq -r '.sessionId' .github/workshop-config.json)
+          TRACK=$(jq -r '.track' .github/workshop-config.json)
+          API_URL=$(jq -r '.apiUrl' .github/workshop-config.json)
+          curl -sf -X POST "$API_URL" \
             -H "Content-Type: application/json" \
             -d '{
-              "sessionId": "fe72e72d",
-              "type": "started",
+              "sessionId": "'"$SESSION_ID"'",
+              "type": "start",
+              "step": 0,
+              "desc": "실습 시작",
               "username": "'"$GITHUB_ACTOR"'",
               "repo": "'"$GITHUB_REPOSITORY"'",
-              "track": "github-pages",
+              "track": "'"$TRACK"'",
               "runId": "'"$GITHUB_RUN_ID"'"
             }'

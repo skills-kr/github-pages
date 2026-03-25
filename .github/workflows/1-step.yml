@@ -82,3 +82,23 @@ jobs:
           gh workflow enable "Step 2"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Workshop Tracker에 단계 보고
+        if: success()
+        continue-on-error: true
+        run: |
+          SESSION_ID=$(jq -r '.sessionId' .github/workshop-config.json)
+          TRACK=$(jq -r '.track' .github/workshop-config.json)
+          API_URL=$(jq -r '.apiUrl' .github/workshop-config.json)
+          curl -sf -X POST "$API_URL" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "sessionId": "'"$SESSION_ID"'",
+              "type": "step",
+              "step": 1,
+              "desc": "1. Pages 활성화",
+              "username": "'"$GITHUB_ACTOR"'",
+              "repo": "'"$GITHUB_REPOSITORY"'",
+              "track": "'"$TRACK"'",
+              "runId": "'"$GITHUB_RUN_ID"'"
+            }'
