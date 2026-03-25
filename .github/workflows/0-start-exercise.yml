@@ -110,15 +110,15 @@ jobs:
           SESSION_ID=$(jq -r '.sessionId' .github/workshop-config.json)
           TRACK=$(jq -r '.track' .github/workshop-config.json)
           API_URL=$(jq -r '.apiUrl' .github/workshop-config.json)
-          curl -sf -X POST "$API_URL" \
+          curl -s -X POST "$API_URL" \
             -H "Content-Type: application/json" \
             -d '{
               "sessionId": "'"$SESSION_ID"'",
               "type": "start",
               "step": 0,
-              "desc": "실습 시작",
+              "description": "실습 시작",
               "username": "'"$GITHUB_ACTOR"'",
               "repo": "'"$GITHUB_REPOSITORY"'",
               "track": "'"$TRACK"'",
               "runId": "'"$GITHUB_RUN_ID"'"
-            }'
+            }' || true
